@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 from config import WIKIPEDIA_FILE
 
 
-def parse_wikipedia_dump(limit=100):
+def parse_wikipedia_dump():
     # Wikipedia XML uses namespaces, so we need to handle them
     namespace = "{http://www.mediawiki.org/xml/export-0.11/}"
     with bz2.open(WIKIPEDIA_FILE, "rt", encoding="utf-8") as file:
@@ -23,5 +23,5 @@ def parse_wikipedia_dump(limit=100):
                 yield title, text
                 count += 1
                 elem.clear()
-                if limit and count >= limit:
-                    break
+                # if limit and count >= limit:
+                #     break
